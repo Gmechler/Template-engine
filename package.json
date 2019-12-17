@@ -1,0 +1,22 @@
+{
+  "name": "template-engine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmechler/Template-engine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gmechler/Template-engine/issues"
+  },
+  "homepage": "https://github.com/gmechler/Template-engine#readme",
+  "dependencies": {
+    "inquirer": "^7.0.1"
+  }
+}
