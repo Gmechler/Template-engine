@@ -37,7 +37,9 @@ const basicHtml = `
           style="background-color: aqua; color:black"
         >
           Dev Team
-        </h1>`;
+        </h1>
+        
+        `;
 
 fs.writeFile("index.html", basicHtml, function(err) {
   if (err) throw err;
@@ -130,31 +132,13 @@ var endPrompt = function() {
       if (answers.closePrompt === "Yes") {
         promptForBasicInfo();
       } else {
-        for (i = 0; i < Engineers.length; ++i) {
-          const EngineerCard = `
-        <div class="row">
-        <div class="card" style="width: 18rem">
-            <div class="card-body" style="background-color:aqua; color: black;">
-            <h5 class="card-title text-center">Name of Employee</h5>
-            <p class="card-text text-center">Job Title</p>
-            </div>
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${ID}</li>
-            <li class="list-group-item">EMAIL: ${Engineers[i].email}</li>
-            <li class="list-group-item">Github Profile: ${Engineers[i].github}</li>
-            </ul>
-        </div>
-        </div>
-        `;
-          fs.appendFile("output/index.html", EngineerCard);
-        }
         for (i = 0; i < Managers.length; ++i) {
           const ManagerCard = `
         <div class="row">
         <div class="card" style="width: 18rem">
             <div class="card-body" style="background-color:aqua; color: black;">
             <h5 class="card-title text-center">Name of Employee</h5>
-            <p class="card-text text-center">Job Title</p>
+            <p class="card-text text-center">Manager</p>
             </div>
             <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${ID}</li>
@@ -164,15 +148,39 @@ var endPrompt = function() {
         </div>
         </div>
         `;
-          fs.appendFile("output/index.html", ManagerCard);
+          fs.appendFile("index.html", ManagerCard, function(err) {
+            if (err) throw err;
+          });
         }
+
+        for (i = 0; i < Engineers.length; ++i) {
+          const EngineerCard = `
+        <div class="row">
+        <div class="card" style="width: 18rem">
+            <div class="card-body" style="background-color:aqua; color: black;">
+            <h5 class="card-title text-center">Name of Employee</h5>
+            <p class="card-text text-center">Engineer</p>
+            </div>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${ID}</li>
+            <li class="list-group-item">EMAIL: ${Engineers[i].email}</li>
+            <li class="list-group-item">Github Profile: ${Engineers[i].github}</li>
+            </ul>
+        </div>
+        </div>
+        `;
+          fs.appendFile("index.html", EngineerCard, function(err) {
+            if (err) throw err;
+          });
+        }
+
         for (i = 0; i < Interns.length; ++i) {
           const InternCard = `
         <div class="row">
         <div class="card" style="width: 18rem">
             <div class="card-body" style="background-color:aqua; color: black;">
             <h5 class="card-title text-center">Name of Employee</h5>
-            <p class="card-text text-center">Job Title</p>
+            <p class="card-text text-center">Intern</p>
             </div>
             <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${ID}</li>
@@ -182,7 +190,9 @@ var endPrompt = function() {
         </div>
         </div>
         `;
-          fs.appendFile("output/index.html", InternCard);
+          fs.appendFile("index.html", InternCard, function(err) {
+            if (err) throw err;
+          });
         }
         var endHtml = `
         <!-- Optional JavaScript -->
