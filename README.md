@@ -1,10 +1,10 @@
-# Developer-profile-pdf-generator
+# Dev Team profile Generator
 
-This is a pdf generator that will create a formated pdf with the infomration available on git hub for a provided username. It is also able to add simple styling based on user input.
+This is a clean way to create an html document for a dev team
 
 # Motivation
 
-This app is designed to assit a manager in presenting some basic developer info for their team or a cadidate pool.
+This app is designed to assit a manager in presenting info for their team or a cadidate pool.
 
 <img src="/assets/imgs/screenshot_1.png" width=400>
 

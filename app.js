@@ -34,11 +34,11 @@ const basicHtml = `
       <body>
         <h1
           class="col-12 py-4 display-4 text-center my-4"
-          style="background-color: aqua; color:black"
+          style="background-color: black; color:white"
         >
           Dev Team
         </h1>
-        
+        <div class="row px-5 mx-5 justify-content-center">
         `;
 
 fs.writeFile("index.html", basicHtml, function(err) {
@@ -92,7 +92,6 @@ var promptForBasicInfo = function() {
         console.log("New manager employee added");
         endPrompt();
       }
-
       if (answers.position === "Engineer") {
         var engineer = new Engineer(
           answers.name,
@@ -102,16 +101,14 @@ var promptForBasicInfo = function() {
         );
         Engineers.push(engineer);
         console.log("New engineer employee added");
-        console.log(engineer);
         endPrompt();
       }
-
       if (answers.position === "Intern") {
         var intern = new Intern(
           answers.name,
           ID,
           answers.email,
-          answers.schoolName
+          answers.school
         );
         Interns.push(intern);
         console.log("New intern employee added");
@@ -134,18 +131,16 @@ var endPrompt = function() {
       } else {
         for (i = 0; i < Managers.length; ++i) {
           const ManagerCard = `
-        <div class="row">
-        <div class="card" style="width: 18rem">
-            <div class="card-body" style="background-color:aqua; color: black;">
-            <h5 class="card-title text-center">Name of Employee</h5>
+        <div class="card col-3 mx-3 my-3" style="width: 18rem">
+            <div class="card-body" style="background-color:black; color: white;">
+            <h5 class="card-title text-center">${Managers[i].name}</h5>
             <p class="card-text text-center">Manager</p>
             </div>
             <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${ID}</li>
+            <li class="list-group-item">ID: ${Managers[i].ID}</li>
             <li class="list-group-item">EMAIL: ${Managers[i].email}</li>
-            <li class="list-group-item">Github Profile: ${Managers[i].officeNum}</li>
+            <li class="list-group-item">Office Number: ${Managers[i].officeNum}</li>
             </ul>
-        </div>
         </div>
         `;
           fs.appendFile("index.html", ManagerCard, function(err) {
@@ -155,18 +150,16 @@ var endPrompt = function() {
 
         for (i = 0; i < Engineers.length; ++i) {
           const EngineerCard = `
-        <div class="row">
-        <div class="card" style="width: 18rem">
-            <div class="card-body" style="background-color:aqua; color: black;">
-            <h5 class="card-title text-center">Name of Employee</h5>
+        <div class="card col-3 mx-3 my-3" style="width: 18rem">
+            <div class="card-body" style="background-color:black; color: white;">
+            <h5 class="card-title text-center">${Engineers[i].name}</h5>
             <p class="card-text text-center">Engineer</p>
             </div>
             <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${ID}</li>
+            <li class="list-group-item">ID: ${Engineers[i].ID}</li>
             <li class="list-group-item">EMAIL: ${Engineers[i].email}</li>
             <li class="list-group-item">Github Profile: ${Engineers[i].github}</li>
             </ul>
-        </div>
         </div>
         `;
           fs.appendFile("index.html", EngineerCard, function(err) {
@@ -176,25 +169,23 @@ var endPrompt = function() {
 
         for (i = 0; i < Interns.length; ++i) {
           const InternCard = `
-        <div class="row">
-        <div class="card" style="width: 18rem">
-            <div class="card-body" style="background-color:aqua; color: black;">
-            <h5 class="card-title text-center">Name of Employee</h5>
+        <div class="card col-3 mx-3 my-3" style="width: 18rem">
+            <div class="card-body" style="background-color:black; color: white;">
+            <h5 class="card-title text-center">${Interns[i].name}</h5>
             <p class="card-text text-center">Intern</p>
             </div>
             <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${ID}</li>
+            <li class="list-group-item">ID: ${Interns[i].ID}</li>
             <li class="list-group-item">EMAIL: ${Interns[i].email}</li>
-            <li class="list-group-item">Github Profile: ${Interns[i].schoolName}</li>
+            <li class="list-group-item">School: ${Interns[i].school}</li>
             </ul>
-        </div>
         </div>
         `;
           fs.appendFile("index.html", InternCard, function(err) {
             if (err) throw err;
           });
         }
-        var endHtml = `
+        var endHtml = `</div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script
