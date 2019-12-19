@@ -70,7 +70,7 @@ var promptForBasicInfo = function() {
       },
       {
         message: "Please enter Intern's school name ",
-        name: "schoolName",
+        name: "school",
         when: answers => answers.position === "Intern"
       },
       {
